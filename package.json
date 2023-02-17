@@ -1,0 +1,37 @@
+{
+  "name": "neuro",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "^13.1.5",
+    "@react-three/drei": "^9.56.24",
+    "@react-three/fiber": "^8.10.1",
+    "@react-three/postprocessing": "^2.7.0",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "@types/three": "^0.149.0",
+    "eslint": "8.32.0",
+    "eslint-config-next": "13.1.5",
+    "gsap": "^3.11.4",
+    "next": "13.1.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "^5.3.6",
+    "three": "^0.149.0",
+    "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.16",
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-glsl": "^1.0.0",
+    "glslify": "^7.1.1"
+  }
+}
