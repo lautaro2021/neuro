@@ -39,8 +39,8 @@ export default function RandomCharacter({wordPassed, anim}:any){
         </span>
         <style jsx>{`
             span{
-            font-family: 'Helvetica';
-            font-weight: bold;
+            font-family: 'Monument';
+            font-weight: 200;
             font-size: ${anim ? '0px' : '22px'};
             cursor: ${anim ? '' : 'pointer'};
             color: grey;

@@ -1,48 +1,43 @@
 import Head from 'next/head'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Navbar from '../Components/Navbar';
+import SpaceSection from '@/Components/SpaceSection/SpaceSection';
 import Hero from '../Components/Hero';
 import DesignerPhrase from '../Components/DesignerPhrase';
-import ScrollSection from '../Components/ScrollSection';
-import ScrollSectionTwo from '../Components/ScrollSectionTwo';
+import VerticalText from '../Components/VerticalTextSection';
+import LateralScroll from '../Components/LateralScroll/LateralScroll';
+import InfoSection from '@/Components/InfoSection/InfoSection';
+import OurClients from '@/Components/OurClients/OurClients';
+import ContactUs from '@/Components/ContactUs/ContactUs';
+import Footer from '@/Components/Footer/Footer';
+import {BsSoundwave} from 'react-icons/bs';
 
 export default function Home() {
   const [focus, setFocus] = useState(true);
+  const [playSound, setPlaySound] = useState(true);
+  const audioRef:any = useRef(null);
 
-  useEffect(() => {
-    let previousTitle = document.title;
-
-    window.addEventListener('blur', () => {
-      previousTitle = document.title;
-      document.title = 'Come back'
-      setFocus(false);
-    })
-
-    window.addEventListener('focus', () => {
-      document.title = previousTitle;
-      setFocus(true);
-    })
-
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    }
-    
-  }, [focus])
-
+  const handleAudio = () => {
+    setPlaySound(playSound ? false : true);
+  }
 
   return (
     <div>
-      <Head>
-        <title>Neuro Studio</title>
-        <meta name="description" content="Neuro Digital Studio" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Navbar/>
       <DesignerPhrase/>
       <Hero/>
-      <ScrollSection/>
-      <ScrollSectionTwo/>
+      <SpaceSection/>
+      <VerticalText/>
+      <SpaceSection/>
+      <LateralScroll/>
+      <SpaceSection/>
+      <InfoSection/>
+      <OurClients/>
+      <ContactUs/>
+      <Footer/>
+      {/* <button onClick = {handleAudio}>
+        <BsSoundwave style = {{width: '50px', height: '50px'}}/>
+      </button>             */}
       <style jsx>{`
         .home-appear{
           background-color: black;
@@ -55,6 +50,20 @@ export default function Home() {
         }
         body{
           overflow: hidden;
+        }
+        button{
+          position: fixed;
+          right: 25px;
+          bottom: 25px;
+          border: none;
+          background: transparent;
+          color: ${playSound ? '#1966AF' : 'grey'};
+          cursor: pointer;
+          z-index: 1000;
+          transition: color .2s ease-in;
+        }
+        button:hover{
+          color: #38BCDC;
         }
       `}</style>
     </div>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef, useLayoutEffect} from 'react'
 import RandomCharacter from '../randomCharacters';
 import gsap from 'gsap';
 
@@ -6,6 +6,8 @@ function Navbar() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [animationController, setAnimationController] = useState(false);
     const [imageAnimation, setImageAnimation] = useState(false);
+    const sectionRef = useRef(null);
+
     const handleScroll = () => {
         const position = window.scrollY * 2;
         setScrollPosition(position);
@@ -32,14 +34,18 @@ function Navbar() {
         }
     }, [scrollPosition])
 
+    useLayoutEffect(() => {
+        const t1 = gsap.timeline({defaults: {ease: 'SlowMo.easeOut'}})
+        t1.fromTo(sectionRef.current, {opacity: 0}, {delay: 6.5, opacity: 1, duration: 1.5})
+    }, [])
+
   return (
-    <section>
+    <section ref = {sectionRef}>
         <div className='center-div'>
             <div className = 'logo-container'>
                 <img
                     src={'/ISO.PNG'}
                     alt='iso neuro'
-                    className = ''
                 />
                 <img
                     src={'/NEURO.png'}
@@ -59,7 +65,7 @@ function Navbar() {
             width: ${animationController ? '0' : '70vw'};
             height: 100px;
             position: fixed;
-            bottom: 20px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -72,6 +78,7 @@ function Navbar() {
             background-color: rgba(13, 11, 16, 0.4);
             border: ${animationController ? 'none' : '1px solid rgba(255, 255, 255, 0.5)'};
             animation: ${animationController ? 'desapear 1s ease-in' : 'ap 1s ease-in'};
+            box-shadow: ${animationController ? '' : '0 0 50px 6px rgb(8 106 216 / 25%)'};
         }
         @keyframes desapear{
             from{
@@ -167,7 +174,7 @@ function Navbar() {
         button{
             border: none;
             padding: 12px 20px;
-            width: ${animationController ? '0' : '140px'};
+            width: ${animationController ? '0' : 'auto'};
             border-radius: 30px;
             -webkit-backdrop-filter: blur(2em);
             backdrop-filter: blur(2em);

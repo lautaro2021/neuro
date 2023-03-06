@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useLayoutEffect} from 'react'
 import gsap from 'gsap'
+import Link from 'next/link';
 
 function DesignerPhrase() {
     const [showElement, setShowElement] = useState(true);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const timelapseGSAP = gsap.timeline({defaults: {ease: "SlowMo.easeOut"}});
-        timelapseGSAP?.to('#create', {y: '0%', duration: 1.7, stagger: 0.5});
+        timelapseGSAP?.fromTo('#create', {opacity: 0, y: '100%'}, {y: '0%', duration: 1, stagger: 0.25, opacity: 1}, 'key1');
+        timelapseGSAP?.to('#container-div', { duration: 0.25, opacity: 1}, 'key1');
 
         setTimeout(() => {
             setShowElement(false);
@@ -16,12 +18,27 @@ function DesignerPhrase() {
 
   return (
     <section>
-        <div>
-            <h2><span id = 'create'>"A brand</span></h2>
-            <h2><span id = 'create'>&nbsp;is a promise</span></h2>
-            <h2><span id = 'create'>&nbsp;of an <span id = 'create' className='experience-span'>EXPERIENCE.</span>"</span></h2>
+        <div id = 'container-div'>
+            <h2>
+                <span id = 'create'>"A&nbsp;</span>
+                <span id = 'create'>brand</span>
+            </h2>
+            <h2>
+                <span id = 'create'>&nbsp;is&nbsp;</span>
+                <span id = 'create'>a&nbsp;</span>
+                <span id = 'create'>promise</span>
+            </h2>
+            <h2>
+                <span id = 'create'>&nbsp;of&nbsp;</span>
+                <span id = 'create'>an 
+                    <span id = 'create' className='experience-span'>&nbsp;EXPERIENCE</span>"
+                </span>
+            </h2>
             <h2 style = {{width: '100%', textAlign: 'end'}}><span id = 'create'>-Alexander Isley</span></h2>
         </div>
+        {/* <Link href = '/home'>
+            <button>GO HOME</button>
+        </Link> */}
     <style jsx>{`
         section{
             background-color: black;
@@ -34,6 +51,7 @@ function DesignerPhrase() {
             align-items: center;
             justify-content: center;
             animation: phrase 5s ease-in;
+            overflow: hidden;
             z-index: -1;
             display: ${showElement ? '' : 'none'}
         }
@@ -60,21 +78,21 @@ function DesignerPhrase() {
             color: white;
             width: 50%;
             height: 100%;
-            font-family: 'Montserrat';
             font-size: 35px;
             margin: 0;
             padding: 0;
+            opacity: 0;
         }
         div h2{
             margin: 5px;
             padding: 0;
             background-color: black;
             overflow: hidden;
-            font-weight: bolder;
+            font-family: 'Monument';
+            font-weight: 200;
         }
         div h2 span{
             display: inline-block;
-            transform: translateY(100%);
         }
         .experience-span{
             font-size: 70px;
