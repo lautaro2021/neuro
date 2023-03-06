@@ -66,7 +66,6 @@ function Hero() {
           white-space: wrap;
           font-weight: 600;
           margin: 0;
-          padding: 0;
           overflow: hidden;
           text-transform: uppercase;
         }

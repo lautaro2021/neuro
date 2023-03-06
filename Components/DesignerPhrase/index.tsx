@@ -20,7 +20,7 @@ function DesignerPhrase() {
     <section>
         <div id = 'container-div'>
             <h2>
-                <span id = 'create'>"A&nbsp;</span>
+                <span id = 'create'>&nbsp;A&nbsp;</span>
                 <span id = 'create'>brand</span>
             </h2>
             <h2>
@@ -31,7 +31,7 @@ function DesignerPhrase() {
             <h2>
                 <span id = 'create'>&nbsp;of&nbsp;</span>
                 <span id = 'create'>an 
-                    <span id = 'create' className='experience-span'>&nbsp;EXPERIENCE</span>"
+                    <span id = 'create' className='experience-span'>&nbsp;EXPERIENCE</span>
                 </span>
             </h2>
             <h2 style = {{width: '100%', textAlign: 'end'}}><span id = 'create'>-Alexander Isley</span></h2>
@@ -76,9 +76,9 @@ function DesignerPhrase() {
             align-items: flex-start;
             justify-content: center;
             color: white;
-            width: 50%;
+            width: 70%;
             height: 100%;
-            font-size: 35px;
+            font-size: 55px;
             margin: 0;
             padding: 0;
             opacity: 0;
